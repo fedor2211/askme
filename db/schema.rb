@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_13_135942) do
+ActiveRecord::Schema.define(version: 2022_12_16_130024) do
 
   create_table "questions", force: :cascade do |t|
     t.text "body"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2022_12_13_135942) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
+    t.string "navbar_color", default: "#370617"
   end
 
 end

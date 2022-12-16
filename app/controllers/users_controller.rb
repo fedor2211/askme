@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   def create
-    user_params = params.require(:user).permit(:name, :nickname, :email, :password, :password_confirmation)
     @user = User.new(user_params)
 
     if @user.save
@@ -38,5 +37,11 @@ class UsersController < ApplicationController
     session.delete(:user_id)
 
     redirect_to root_path, notice: 'Пользователь удалён'
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :nickname, :navbar_color, :email, :password, :password_confirmation)
   end
 end
