@@ -3,9 +3,9 @@
 
   <%= render "question", question: @question %>
 
-  <% if question.answer.present? %>
+  <% if @question.answer.present? %>
     <div class="mb-sm text-dark-red">
-      <%= question.answer %>
+      <%= @question.answer %>
     </div>
   <% end %>
 

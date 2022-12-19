@@ -1,8 +1,11 @@
 class User < ApplicationRecord
-  validates :navbar_color, format: { with: /\A#\h{6}\z/ }
+  validates :email, presence: true, uniqueness: true, length: { maximum: 40 }, format: { with: /\A\w+@\w+\.[A-Za-z]+\z/ }
+  validates :nickname, presence: true, uniqueness: true, length: { maximum: 40 }, format: { with: /\A\w+\z/ }
   has_secure_password
   before_validation :downcase_nickname, :downcase_email
   has_many :questions, dependent: :destroy
+
+  before_validation :downcase_nickname, :downcase_email
 
   private
 
