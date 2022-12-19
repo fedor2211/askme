@@ -10,15 +10,19 @@
 
 <%= link_to 'Спроси меня', new_question_path(user_id: @user.id), class: 'button button-yellow' %>
 
-<div class="container mt-sm">
-  <h2 class="title-lg">
-    <%= @questions.count %>
-    <%= inclination(@questions.count, 'вопрос', 'вопроса', 'вопросов') %>
-  </h2>
-</div>
-
-<% @questions.each do |question| %>
-  <div class="mt-sm container">
-    <%= render question %>
+<% if @questions.any? %>
+  <div class="container mt-sm">
+    <h2 class="title-lg">
+      <%= @questions.count %>
+      <%= inclination(@questions.count, 'вопрос', 'вопроса', 'вопросов') %>
+    </h2>
   </div>
+
+  <% @questions.each do |question| %>
+    <div class="mt-sm container">
+      <%= render question %>
+    </div>
+  <% end %>
+<% else %>
+  <%= render "users/empty_state", user: @user %>
 <% end %>
