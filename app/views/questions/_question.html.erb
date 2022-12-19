@@ -1,3 +1,16 @@
+<div class="mb-md text-bold">
+  <% if question.author == current_user %>
+    Вы задали
+  <% else %>
+    Задал <%= link_to nickname_output(question.author), user_path(question.author) %>
+  <% end %>
+  <% if question.user == current_user %>
+    вам:
+  <% else %>
+    пользователю <%= link_to nickname_output(question.user), user_path(question.user) %>:
+  <% end %>
+</div>
+
 <div class="mb-sm">
   <%= simple_format(html_escape(question.body)) %>
 </div>
