@@ -7,11 +7,14 @@
     <%= l(question.created_at, format: :short) %>
   </div>
 
-  <div>
-    <%= link_to fa_icon('pencil'), edit_question_path(question), title: 'Изменить вопрос' %>
-    <%= button_to fa_icon('trash-o'), question_path(question), method: :delete, title: 'Удалить вопрос', form: { data: { turbo_confirm: 'Удалить вопрос?'}} %>
-    <% unless question.hidden? %>
-      <%= button_to fa_icon('eye-slash'), hide_question_path(question), method: :put, title: 'Скрыть вопрос', form: { data: { turbo_confirm: 'Скрыть вопрос?'}} %>
-    <% end %>
-  </div>
+  <% if question.user == current_user %>
+    <div>
+      <% edit_icon = question.answer.blank? ? 'reply' : 'pencil' %>
+      <%= link_to fa_icon(edit_icon), edit_question_path(question), title: 'Изменить вопрос' %>
+      <%= button_to fa_icon('trash-o'), question_path(question), method: :delete, title: 'Удалить вопрос', form: { data: { turbo_confirm: 'Удалить вопрос?'}} %>
+      <% unless question.hidden? %>
+        <%= button_to fa_icon('eye-slash'), hide_question_path(question), method: :put, title: 'Скрыть вопрос', form: { data: { turbo_confirm: 'Скрыть вопрос?'}} %>
+      <% end %>
+    </div>
+  <% end %>
 </div>

@@ -40,3 +40,7 @@ button {
 .text-red {
   color: red;
 }
+
+.text-dark-red {
+  color: #9d0208;
+}
