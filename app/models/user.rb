@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_secure_password
   before_validation :downcase_nickname, :downcase_email
   has_many :questions, dependent: :destroy
+  has_many :asked_questions, dependent: :nullify, class_name: "Question"
 
   before_validation :downcase_nickname, :downcase_email
 
