@@ -1,8 +1,10 @@
 <div class="mb-md text-bold">
-  <% if question.author == current_user %>
+  <% if question.author.nil?%>
+    Анонимно
+  <% elsif question.author == current_user %>
     Вы задали
   <% else %>
-    Задал <%= link_to nickname_output(question.author), user_path(question.author) %>
+    От <%= link_to nickname_output(question.author), user_path(question.author) %>
   <% end %>
   <% if question.user == current_user %>
     вам:
