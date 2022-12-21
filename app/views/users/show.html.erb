@@ -1,5 +1,9 @@
 <div class="user-box mb-sm">
   <h2 class="title-lg mt-lg"><%= @user.name %></h2>
+
+  <div class="mt">
+    <%= render "users/user_avatar", user: @user %>
+  </div>
   <p class="text-bold mt mb-lg">@<%= @user.nickname %></p>
   <% if current_user == @user %>
     <p class="mt mb-lg">
