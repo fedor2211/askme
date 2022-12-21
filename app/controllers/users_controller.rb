@@ -19,19 +19,15 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
     redirect_with_alert unless @user == current_user
   end
 
   def show
-    @user = User.find(params[:id])
     @questions = @user.questions
     @question = Question.new(user: @user)
   end
 
   def update
-    @user = User.find(params[:id])
-
     if @user.update(user_params)
       redirect_to root_path, notice: 'Данные пользователя обновлены'
     else
@@ -55,7 +51,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find_by(nickname: params[:nickname])
   end
 
   def authorize_user
