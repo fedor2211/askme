@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
     question_params[:author] = current_user
     question = Question.create(question_params)
 
-    redirect_to user_path(question.user), notice: "Новый вопрос создан!"
+    redirect_to user_path(question.user.nickname), notice: "Новый вопрос создан!"
   end
 
   def update
@@ -22,7 +22,7 @@ class QuestionsController < ApplicationController
     user = @question.user
     @question.destroy
 
-    redirect_to user_path(user), notice: "Вопрос удалён!"
+    redirect_to user_path(user.nickname), notice: "Вопрос удалён!"
   end
 
   def index
