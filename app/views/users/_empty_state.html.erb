@@ -1,4 +1,4 @@
 <div class="mt-md mb-md empty-state">
   <p class="mb-sm title-md text-grey">Этому пользователю ещё никто не задал вопрос</p>
-  <%= link_to "Задайте вопрос первым", new_question_path(user_id: user.id) %>
+  <%= link_to "Задайте вопрос первым", new_question_path(user_nickname: user.nickname) %>
 </div>

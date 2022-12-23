@@ -12,7 +12,7 @@
   <% end %>
 </div>
 
-<%= link_to 'Спроси меня', new_question_path(user_id: @user.id), class: 'button button-yellow' %>
+<%= link_to 'Спроси меня', new_question_path(user_nickname: @user.nickname), class: 'button button-yellow' %>
 
 <% if @questions.any? %>
   <div class="container mt-sm">

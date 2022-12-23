@@ -8,9 +8,9 @@ class User < ApplicationRecord
   has_many :questions, dependent: :destroy
   has_many :asked_questions, dependent: :nullify, class_name: "Question"
 
-  private
-
   before_validation :downcase_nickname, :downcase_email
+
+  private
 
   def downcase_nickname
     nickname&.downcase!
