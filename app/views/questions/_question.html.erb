@@ -17,6 +17,17 @@
   <%= simple_format(html_escape(question.body)) %>
 </div>
 
+<% unless question.hashtags.empty?%>
+  <div class="mb-sm">
+    <span class="text-bold">Tags:</span>
+    <% question.hashtags.each do |hashtag| %>
+      <span>
+        <%= hashtag_link(hashtag) %>
+      </span>
+    <% end %>
+  </div>
+<% end %>
+
 <div class="text-sm question-footer">
   <div class="text-grey">
     <%= l(question.created_at, format: :short) %>

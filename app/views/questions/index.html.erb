@@ -10,11 +10,24 @@
   </div>
 </div>
 
+<% unless @hashtags.empty?%>
+  <div class="container mt">
+    <h2 class="title-lg mb-md">Теги</h2>
+    <% @hashtags.each do |hashtag| %>
+      <%= hashtag_link(hashtag) %>
+    <% end %>
+  </div>
+<% end %>
+
 <div class="container mt">
   <h2 class="title-lg mb-md">
-    <%= inclination(@questions.count, 'Последний', 'Последние', 'Последние') %>
-    <%= @questions.count %>
-    <%= inclination(@questions.count, 'вопрос', 'вопроса', 'вопросов') %>
+    <% if params[:tag]%>
+      Вопросы <%= hashtag_link(@tag) %>
+    <% else %>
+      <%= inclination(@questions.count, 'Последний', 'Последние', 'Последние') %>
+      <%= @questions.count %>
+      <%= inclination(@questions.count, 'вопрос', 'вопроса', 'вопросов') %>
+    <% end %>
   </h2>
   <% @questions.each do |question|%>
     <%= render question %>
