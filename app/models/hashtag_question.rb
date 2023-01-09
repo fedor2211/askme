@@ -2,8 +2,7 @@ class HashtagQuestion < ApplicationRecord
   belongs_to :question
   belongs_to :hashtag
 
-  validates :question, presence: true, uniqueness: { scope: :hashtag_id }
-  validates :hashtag, presence: true
+  validates :question, uniqueness: { scope: :hashtag_id }
   after_destroy :destroy_empty_hashtag
 
   private
