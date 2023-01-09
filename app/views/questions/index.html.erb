@@ -30,6 +30,12 @@
     <% end %>
   </h2>
   <% @questions.each do |question|%>
-    <%= render question %>
+    <div class="mb-lg">
+      <h2 class="title-sm mb"><%= question_link question %></h2>
+      <%= render question %>
+      <% unless question.hashtags.empty? %>
+        <%= render "questions/tags", hashtags: question.hashtags%>
+      <% end %>
+    </div>
   <% end %>
 </div>
