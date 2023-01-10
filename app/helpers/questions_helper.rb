@@ -1,6 +1,6 @@
 module QuestionsHelper
   def hashtag_link(hashtag)
-    link_to "##{hashtag.name}", root_path(tag: hashtag.name)
+    link_to "##{hashtag.name}", hashtag_questions_path(hashtag.name)
   end
 
   def question_link(question)

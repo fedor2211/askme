@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
   before_action :ensure_current_user, only: %i[update destroy edit]
   before_action :set_question_for_current_user, only: %i[edit update destroy]
   before_action :set_question, only: %i[update show destroy edit hide]
+  before_action :set_hashtag, only: %i[hashtag]
 
   def create
     question_params = params.require(:question).permit(:body, :user_id)
@@ -27,8 +28,7 @@ class QuestionsController < ApplicationController
 
   def index
     @hashtags = Hashtag.all
-    @tag = Hashtag.find_by(name: params[:tag])
-    @questions = @tag ? @tag.questions : Question.order(created_at: :desc).first(10)
+    @questions = Question.order(created_at: :desc).first(10)
     @users = User.order(created_at: :desc).first(10)
   end
 
@@ -45,6 +45,10 @@ class QuestionsController < ApplicationController
     redirect_to question_path(@question), notice: "Вопрос скрыт!"
   end
 
+  def hashtag
+    @questions = @hashtag.questions
+  end
+
   private
 
   def set_question
@@ -57,5 +61,9 @@ class QuestionsController < ApplicationController
 
   def ensure_current_user
     redirect_with_alert unless current_user.present?
+  end
+
+  def set_hashtag
+    @hashtag = Hashtag.find_by(name: params[:name])
   end
 end
