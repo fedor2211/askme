@@ -16,7 +16,7 @@
 
   <% unless @question.hashtags.empty? %>
     <span class="text-bold">Теги:</span>
-    <%= render "questions/hashtags", hashtags: @question.hashtags%>
+    <%= render partial: "hashtags/hashtag", collection: @question.hashtags %>
   <% end %>
 
   <p class="mt"><%= link_to "Все вопросы", questions_path %></p>

@@ -9,8 +9,4 @@ module ApplicationHelper
       many
     end
   end
-
-  def hashtag_questions_path(hashtag_name)
-    "/questions/hashtag/#{hashtag_name}"
-  end
 end

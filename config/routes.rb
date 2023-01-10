@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :questions do
     put "hide", on: :member
-    get "hashtag/:name", on: :collection, to: "questions#hashtag"
   end
+
+  resources :hashtags, only: %i[show], param: :name
 end
