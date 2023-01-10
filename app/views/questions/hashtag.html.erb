@@ -7,6 +7,7 @@
       <h2 class="title-sm mb"><%= question_link question %></h2>
       <%= render question %>
       <% unless question.hashtags.empty? %>
+        <span class="text-bold">Теги:</span>
         <%= render "questions/hashtags", hashtags: question.hashtags%>
       <% end %>
     </div>
