@@ -24,6 +24,7 @@
 
   <% @questions.each do |question| %>
     <div class="mt-sm container">
+      <h2 class="title-sm mb"><%= question_link question %></h2>
       <%= render question %>
     </div>
   <% end %>
