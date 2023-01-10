@@ -12,7 +12,7 @@
 
 <div class="container mt">
   <h2 class="title-lg mb-md">Теги</h2>
-  <%= render "questions/tags", hashtags: @hashtags %>
+  <%= render "questions/hashtags", hashtags: @hashtags %>
 </div>
 
 <div class="container mt">
@@ -30,7 +30,8 @@
       <h2 class="title-sm mb"><%= question_link question %></h2>
       <%= render question %>
       <% unless question.hashtags.empty? %>
-        <%= render "questions/tags", hashtags: question.hashtags%>
+        <span class="text-bold">Теги:</span>
+        <%= render "questions/hashtags", hashtags: question.hashtags%>
       <% end %>
     </div>
   <% end %>
