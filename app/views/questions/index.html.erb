@@ -10,14 +10,10 @@
   </div>
 </div>
 
-<% unless @hashtags.empty?%>
-  <div class="container mt">
-    <h2 class="title-lg mb-md">Теги</h2>
-    <% @hashtags.each do |hashtag| %>
-      <%= hashtag_link(hashtag) %>
-    <% end %>
-  </div>
-<% end %>
+<div class="container mt">
+  <h2 class="title-lg mb-md">Теги</h2>
+  <%= render "questions/tags", hashtags: @hashtags %>
+</div>
 
 <div class="container mt">
   <h2 class="title-lg mb-md">
