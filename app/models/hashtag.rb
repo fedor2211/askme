@@ -6,10 +6,6 @@ class Hashtag < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 255 }
 
-  def questions?
-    questions.empty?
-  end
-
   private
 
   def downcase_name

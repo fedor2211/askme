@@ -2,7 +2,7 @@ class HashtagsController < ApplicationController
   before_action :set_hashtag, only: %i[show]
 
   def show
-    @questions = @hashtag.questions
+    @questions = @hashtag.questions.includes(%i[author user hashtags])
   end
 
   private

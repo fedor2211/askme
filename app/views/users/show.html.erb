@@ -26,6 +26,8 @@
     <div class="mt-sm container">
       <h2 class="title-sm mb"><%= question_link question %></h2>
       <%= render question %>
+      <span class="text-bold">Теги:</span>
+      <%= render question.hashtags %>
     </div>
   <% end %>
 <% else %>

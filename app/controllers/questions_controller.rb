@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :ensure_current_user, only: %i[update destroy edit]
-  before_action :set_question_for_current_user, only: %i[edit update destroy]
-  before_action :set_question, only: %i[update show destroy edit hide]
+  before_action :set_question_for_current_user, only: %i[edit update destroy hide]
+  before_action :set_question, only: %i[show]
 
   def create
     question_params = params.require(:question).permit(:body, :user_id)
@@ -26,8 +26,8 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @hashtags = Hashtag.all
-    @questions = Question.order(created_at: :desc).first(10)
+    @hashtags = Hashtag.joins(:questions).distinct.order(created_at: :desc)
+    @questions = Question.includes(%i[user author hashtags]).order(created_at: :desc).first(10)
     @users = User.order(created_at: :desc).first(10)
   end
 
@@ -47,7 +47,7 @@ class QuestionsController < ApplicationController
   private
 
   def set_question
-    @question = Question.find(params[:id])
+    @question = Question.includes(:hashtags).find(params[:id])
   end
 
   def set_question_for_current_user

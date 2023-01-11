@@ -6,10 +6,8 @@
     <div class="mb-lg">
       <h2 class="title-sm mb"><%= question_link question %></h2>
       <%= render question %>
-      <% unless question.hashtags.empty? %>
-        <span class="text-bold">Теги:</span>
-        <%= render partial: "hashtags/hashtag", collection: question.hashtags %>
-      <% end %>
+      <span class="text-bold">Теги:</span>
+      <%= render question.hashtags %>
     </div>
   <% end %>
 </div>

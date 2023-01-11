@@ -13,11 +13,8 @@
   <% else %>
     <div class="mb-sm text-grey">отсутсвует</div>
   <% end %>
+  <span class="text-bold">Теги:</span>
+  <%= render @question.hashtags %>
 
-  <% unless @question.hashtags.empty? %>
-    <span class="text-bold">Теги:</span>
-    <%= render partial: "hashtags/hashtag", collection: @question.hashtags %>
-  <% end %>
-
-  <p class="mt"><%= link_to "Все вопросы", questions_path %></p>
+  <div class="mt"><%= link_to "Все вопросы", questions_path %></div>
 </div>
