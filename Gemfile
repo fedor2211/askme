@@ -12,7 +12,9 @@ gem "stimulus-rails"
 gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", require: false
 gem "gravtastic"
-gem 'font-awesome-rails'
+gem "font-awesome-rails"
+gem "dotenv-rails", "~> 2.8"
+gem "recaptcha", "~> 5.12"
 
 group :development, :test do
   gem "sqlite3", "~> 1.4"
