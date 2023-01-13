@@ -1,5 +1,5 @@
 module Hashtags
-  class HashtagUpdater < ApplicationService
+  class HashtagCreator < ApplicationService
     def initialize(question)
       @question = question
     end
